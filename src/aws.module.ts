@@ -1,6 +1,7 @@
 import { DynamicModule, Module } from '@nestjs/common';
 import { IConexionModuleAsyncOptions } from "./interfaces";
 import { CONFIG_CONNECTION_OPTIONS } from "./constants";
+import {AwsCloudSqsServer} from "./services";
 
 
 @Module({})
@@ -14,8 +15,9 @@ export class AwsNestModule {
                     useFactory: options.useFactory,
                     inject: options.inject || [],
                 },
+                AwsCloudSqsServer
             ],
-            exports: [],
+            exports: [AwsCloudSqsServer],
         };
     }
 }
