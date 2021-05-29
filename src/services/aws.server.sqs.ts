@@ -6,7 +6,7 @@ export class AwsCloudSqsServer
     /**
      * This method is triggered when you run "app.listen()".
      */
-    listen(callback: () => void) {
+    async listen(callback: () => void) {
         console.log(this.messageHandlers);
         callback();
     }
