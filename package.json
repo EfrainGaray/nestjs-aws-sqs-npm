@@ -1,7 +1,7 @@
 {
-  "name": "nestjs-aws-starter",
+  "name": "nestjs-aws-sqs",
   "version": "0.0.0",
-  "description": "conexion a amazon aws, starter",
+  "description": "conexion a amazon aws, sqs microservice strategy",
   "main": "dist/index",
   "types": "dist/index",
   "scripts": {
@@ -12,7 +12,9 @@
   "keywords": [
     "aws",
     "npm",
-    "amazon"
+    "amazon",
+    "microservice",
+    "strategy"
   ],
   "author": "Efrain Garay A.",
   "license": "MIT",
