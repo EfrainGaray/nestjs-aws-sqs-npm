@@ -1,8 +1,7 @@
 name: npm publish
 on:
-  pull_request:
-    branches:
-      - main
+  push:
+    
 jobs:
   build:
     runs-on: ubuntu-latest
