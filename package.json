@@ -19,10 +19,10 @@
   "author": "Efrain Garay A.",
   "license": "MIT",
   "dependencies": {
+    "@aws-sdk/client-sqs": "^3.17.0",
     "@nestjs/common": "^7.6.15",
     "@nestjs/core": "^7.6.17",
     "@nestjs/microservices": "^7.6.17",
-    "aws-sdk": "^2.896.0",
     "rxjs": "^6.6.7"
   },
   "devDependencies": {
