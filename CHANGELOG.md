@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0](https://github.com/EfrainGaray/nestjs-aws-sqs-npm/compare/v1.0.0...v1.1.0) (2021-05-29)
+
+
+### Features
+
+* server sqs amazon ([#5](https://github.com/EfrainGaray/nestjs-aws-sqs-npm/issues/5)) ([1f9997a](https://github.com/EfrainGaray/nestjs-aws-sqs-npm/commit/1f9997a082c2ffe2f137ee584e06f8964fb93da3))
+
 # 1.0.0 (2021-05-29)
 
 

@@ -1,1 +1,1 @@
-export * from './aws-conexion-module.interface';
+export * from './aws-sqs.interface';
