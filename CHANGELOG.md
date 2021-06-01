@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0](https://github.com/EfrainGaray/nestjs-aws-sqs-npm/compare/v1.1.0...v1.2.0) (2021-06-01)
+
+
+### Bug Fixes
+
+* add package @aws-sdk/client-sts ([e3008b9](https://github.com/EfrainGaray/nestjs-aws-sqs-npm/commit/e3008b9d3e75c999c2dd58ee10ff948896cafca6))
+
+
+### Features
+
+* sqs consumer aws  ([#6](https://github.com/EfrainGaray/nestjs-aws-sqs-npm/issues/6)) ([933a717](https://github.com/EfrainGaray/nestjs-aws-sqs-npm/commit/933a7172921f6577446e5a7829c0606712a5e460))
+
 # [1.1.0](https://github.com/EfrainGaray/nestjs-aws-sqs-npm/compare/v1.0.0...v1.1.0) (2021-05-29)
 
 
