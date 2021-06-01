@@ -20,6 +20,7 @@
   "license": "MIT",
   "dependencies": {
     "@aws-sdk/client-sqs": "^3.17.0",
+    "@aws-sdk/client-sts": "^3.17.0",
     "@nestjs/common": "^7.6.15",
     "@nestjs/core": "^7.6.17",
     "@nestjs/microservices": "^7.6.17",
