@@ -23,7 +23,14 @@
 
 
 
-# import 
+# install
+
+
+```bash
+yarn add @nestjs/microservices
+```
+
+# import
 
  main.ts
 
