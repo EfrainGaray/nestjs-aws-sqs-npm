@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file. See
 [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.4](https://github.com/EfrainGaray/nestjs-aws-sqs-npm/compare/v1.2.3...v1.2.4) (2021-06-15)
+
+
+### Bug Fixes
+
+* edit path interfaces ([29a58b8](https://github.com/EfrainGaray/nestjs-aws-sqs-npm/commit/29a58b8bd8bf76c34b7e3b64900ebfa2f1af91a5))
+
 ## [1.2.3](https://github.com/EfrainGaray/nestjs-aws-sqs-npm/compare/v1.2.2...v1.2.3) (2021-06-15)
 
 
