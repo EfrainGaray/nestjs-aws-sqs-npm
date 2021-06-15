@@ -6,7 +6,7 @@
 [circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
 [circleci-url]: https://circleci.com/gh/nestjs/nest
 
-  <p align="center">Module for aws services (STARTER) 
+  <p align="center">Module for aws services (SQS CONSUMER) 
         <p align="center">
 
 <a href="https://www.npmjs.com/~nestjscore" target="_blank">
@@ -19,36 +19,43 @@
 </p>
 
 
-<h1 align="center" style="border-bottom: none;">STARTER NPM AWS SERVICES</h1>
+<h1 align="center" style="border-bottom: none;">SQS CONSUMER NPM AWS SERVICES</h1>
 
 
 
-#import 
+# import 
 
- app.module.ts
+ main.ts
 
 ```javascript
-import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { AwsNestModule } from 'nestjs-aws-e';
-@Module({
-    imports: [
-        AwsNestModule.forRootSnsAsync({
-            useFactory: async () => {
-                return {
-                    accessKeyId: '',
-                    secretAccessKey: '',
-                    region: '',
-                };
+import { NestFactory } from '@nestjs/core';
+import { AppModule } from './app.module';
+import {MicroserviceOptions} from "@nestjs/microservices";
+import {AwsCloudSqsServer} from "nestjs-aws-sqs";
+
+async function bootstrap() {
+    const app = await NestFactory.createMicroservice<MicroserviceOptions>(
+        AppModule,
+            {
+                strategy: new AwsCloudSqsServer({
+                    params:{
+                        MaxNumberOfMessages: 1,
+                        MessageAttributeNames: ["All"],
+                        QueueUrl: "QueueUrl",
+                        VisibilityTimeout: 30,
+                        WaitTimeSeconds: 0,
+                    },
+                    conexion:{
+                        channel: 'notificaions',
+                        refresh: 500, // ms
+                        region: 'region'
+                    }
+                }),
             },
-            inject: [],
-        }),
-    ],
-    controllers: [AppController],
-    providers: [AppService],
-})
-export class AppModule {}
+    );
+    app.listen(() => console.log('Microservice is listening'));
+}
+bootstrap();
 ```
 
 
