@@ -1,12 +1,12 @@
 import { Logger } from '@nestjs/common';
 import { CustomTransportStrategy, Server } from '@nestjs/microservices';
 import { SQSClient, ReceiveMessageCommand, DeleteMessageCommand } from "@aws-sdk/client-sqs";
-import { AwsSqsOptions } from "@interfaces/aws-sqs.interface";
+import { AwsSqsOptions } from 'nestjs-aws-sqs/src';
 
 export class AwsCloudSqsServer extends Server implements CustomTransportStrategy {
     public readonly logger = new Logger(AwsCloudSqsServer.name);
     private client: SQSClient;
-
+    error = false;
     constructor(protected readonly options: AwsSqsOptions) {
         super();
 
@@ -22,7 +22,7 @@ export class AwsCloudSqsServer extends Server implements CustomTransportStrategy
     async start (callback?: () => void) {
         const { params } = this.options;
         const { channel, refresh } = this.options.conexion;
-        let error = false;
+
         try {
             const data = await this.client.send(new ReceiveMessageCommand(params));
             if (data.Messages) {
@@ -32,21 +32,19 @@ export class AwsCloudSqsServer extends Server implements CustomTransportStrategy
                 };
                 try {
                     const data = await this.client.send(new DeleteMessageCommand(deleteParams));
-                    //this.logger.debug(data);
                 } catch (err) {
-                    if(!error) this.logger.debug(err);
+                    if(!this.error) this.logger.debug(err);
 
                 }
-            } else {
-                this.logger.error('no delete message');
             }
+            this.error = false;
             const echoHandler = this.messageHandlers.get(channel);
             data.Messages.map( async (message) =>await echoHandler(JSON.parse(message.Body)))
             setTimeout(async () => await this.start(callback), refresh)
         } catch (err) {
-            error = true;
-            this.logger.error('no messages');
-            setTimeout(async () => await this.start(callback), 5000);
+            this.error = true;
+            this.logger.log('no messages');
+            setTimeout(async () => await this.start(callback), 10000);
         }
 
         callback()
