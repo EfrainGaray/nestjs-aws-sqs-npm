@@ -1,7 +1,7 @@
 {
   "name": "nestjs-aws-sqs",
   "description": "conexion a amazon aws, sqs microservice strategy, SQS CONSUMER",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "main": "dist/index",
   "types": "dist/index",
   "scripts": {
