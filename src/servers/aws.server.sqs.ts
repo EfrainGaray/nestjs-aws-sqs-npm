@@ -22,6 +22,7 @@ export class AwsCloudSqsServer extends Server implements CustomTransportStrategy
     async start (callback?: () => void) {
         const { params } = this.options;
         const { channel, refresh } = this.options.conexion;
+        let error = false;
         try {
             const data = await this.client.send(new ReceiveMessageCommand(params));
             if (data.Messages) {
@@ -33,7 +34,8 @@ export class AwsCloudSqsServer extends Server implements CustomTransportStrategy
                     const data = await this.client.send(new DeleteMessageCommand(deleteParams));
                     //this.logger.debug(data);
                 } catch (err) {
-                    this.logger.debug(err);
+                    if(!error) this.logger.debug(err);
+
                 }
             } else {
                 this.logger.error('no delete message');
@@ -42,7 +44,9 @@ export class AwsCloudSqsServer extends Server implements CustomTransportStrategy
             data.Messages.map( async (message) =>await echoHandler(JSON.parse(message.Body)))
             setTimeout(async () => await this.start(callback), refresh)
         } catch (err) {
-            this.logger.error('no conexion queue');
+            error = true;
+            this.logger.error('no messages');
+            setTimeout(async () => await this.start(callback), 5000);
         }
 
         callback()
