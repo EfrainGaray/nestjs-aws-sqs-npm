@@ -1,7 +1,7 @@
 import { Logger } from '@nestjs/common';
 import { CustomTransportStrategy, Server } from '@nestjs/microservices';
 import { SQSClient, ReceiveMessageCommand, DeleteMessageCommand } from "@aws-sdk/client-sqs";
-import { AwsSqsOptions } from 'nestjs-aws-sqs/src';
+import { AwsSqsOptions } from 'nestjs-aws-sqs/src';  
 
 export class AwsCloudSqsServer extends Server implements CustomTransportStrategy {
     public readonly logger = new Logger(AwsCloudSqsServer.name);
