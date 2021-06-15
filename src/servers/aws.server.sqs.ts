@@ -1,7 +1,7 @@
 import { Logger } from '@nestjs/common';
 import { CustomTransportStrategy, Server } from '@nestjs/microservices';
 import { SQSClient, ReceiveMessageCommand, DeleteMessageCommand } from "@aws-sdk/client-sqs";
-import {AwsSqsOptions} from "@interfaces/aws-sqs.interface";
+import {AwsSqsOptions} from "../interfaces";
 
 export class AwsCloudSqsServer extends Server implements CustomTransportStrategy {
     public readonly logger = new Logger(AwsCloudSqsServer.name);
@@ -9,7 +9,6 @@ export class AwsCloudSqsServer extends Server implements CustomTransportStrategy
     error = false;
     constructor(protected readonly options: AwsSqsOptions) {
         super();
-
     }
     /**
      * This method is triggered when you run "app.listen()".
